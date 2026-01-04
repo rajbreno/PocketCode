@@ -4,7 +4,7 @@
 
 # PocketCode
 
-**Build apps using AI right from your Android phone.**
+**Run AI coding agents (OpenCode, Claude Code, Gemini CLI) on Android.**
 
 **Features:**
 - **Secure Sandbox** — Your code stays private, other apps can't access it
