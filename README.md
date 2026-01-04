@@ -6,6 +6,12 @@
 
 **Build apps using AI right from your Android phone.**
 
+**Features:**
+- 🔒 **Secure Sandbox** — Your code stays private, other apps can't access it
+- ⚡ **Fast** — Runs natively on your phone's CPU, no cloud lag
+- 🚀 **2 Commands Setup** — Copy-paste and you're ready to code
+- 🌐 **Web + Terminal** — Use browser UI or terminal, your choice
+
 > Works with **OpenCode**, **Claude Code**, **Codex**, and **Gemini CLI**.  
 > This guide uses [OpenCode](https://opencode.ai).
 
@@ -27,7 +33,7 @@
 pkg update -y && pkg upgrade -y && pkg install proot-distro -y && proot-distro install debian && proot-distro login debian
 ```
 
-**Inside Linux (after prompt shows `root@localhost`), run:**
+**Inside Linux (when your prompt changes to `root@localhost`), run:**
 ```
 apt update && apt install curl git build-essential python3 -y && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install nodejs -y && curl -fsSL https://opencode.ai/install | bash && echo 'alias opencode-web="opencode web --hostname 127.0.0.1 --port 4096"' >> ~/.bashrc && source ~/.bashrc
 ```
@@ -56,7 +62,7 @@ pkg install proot-distro -y && proot-distro install debian
 ```
 proot-distro login debian
 ```
-Your prompt should now show `root@localhost`
+✅ Success! Your prompt should change to `root@localhost`
 
 **Step 4: Install Tools**
 ```
@@ -72,7 +78,7 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt install nodejs 
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-**Step 6: Create Shortcut**
+**Step 6: Create Shortcut** (so you can type `opencode-web` instead of long commands)
 ```
 echo 'alias opencode-web="opencode web --hostname 127.0.0.1 --port 4096"' >> ~/.bashrc && source ~/.bashrc
 ```
@@ -88,20 +94,32 @@ Every time you open Termux, run:
 proot-distro login debian
 ```
 
-Then start the AI:
+Then choose how you want to use the AI:
 
-| Mode | Command | Access |
-|------|---------|--------|
-| Web | `opencode-web` | Chrome → `localhost:4096` |
-| Terminal | `opencode` | Direct in Termux |
+### 🌐 Option 1: Web Interface
+```
+opencode-web
+```
+Open Chrome → `localhost:4096`
+
+### 💻 Option 2: Terminal Only
+```
+opencode
+```
+Chat directly in Termux.
+
+---
+
+## Building Your First Project
 
 **Try it:** Tell the AI *"Create a website with a blue background"*
 
-**Preview websites:**
-```
-python3 -m http.server 8080
-```
-Then open Chrome → `localhost:8080`
+**Preview your website:**
+
+| Project Type | Command | Browser URL |
+|--------------|---------|-------------|
+| HTML / Static | `python3 -m http.server 8080` | `localhost:8080` |
+| React / Next.js | `npm run dev` | `localhost:3000` |
 
 ---
 
@@ -116,27 +134,36 @@ Then open Chrome → `localhost:8080`
 
 ## Saving Your Work
 
-⚠️ **Uninstalling Termux deletes everything.**
+⚠️ **Warning:** Uninstalling Termux deletes all your projects!
 
-**Local Backup** (run from Termux, not inside Linux):
+| Method | Best For | What It Does |
+|--------|----------|--------------|
+| **GitHub** ⭐ | Recommended | Saves to cloud, access from any device |
+| **Local Backup** | Offline / No GitHub | Saves zip file to Downloads folder |
+
+### ⭐ GitHub (Recommended)
+
+**One-time setup:**
+```
+ssh-keygen -t ed25519 && cat ~/.ssh/id_ed25519.pub
+```
+Copy the key (select all the text that appears) and add it to [GitHub Settings](https://github.com/settings/keys).
+
+**Save your project:** (replace `YOU` and `project` with your GitHub username and repo name)
+```
+cd ~/my-project && git init && git add . && git commit -m "save" && git remote add origin git@github.com:YOU/project.git && git push -u origin main
+```
+
+### 📁 Local Backup
+
+Run these commands **from Termux** (exit Linux first):
 ```
 exit
 ```
 ```
-termux-setup-storage
+termux-setup-storage && tar -czvf ~/storage/downloads/pocketcode-backup.tar.gz ~/.proot-distro/
 ```
-```
-tar -czvf ~/storage/downloads/pocketcode-backup.tar.gz ~/.proot-distro/
-```
-
-**GitHub Sync:**
-```
-ssh-keygen -t ed25519 && cat ~/.ssh/id_ed25519.pub
-```
-Add the key to [GitHub](https://github.com/settings/keys), then:
-```
-cd ~/my-project && git init && git add . && git commit -m "save" && git remote add origin git@github.com:YOU/project.git && git push -u origin main
-```
+Your backup will be in the **Downloads** folder.
 
 ---
 
