@@ -32,6 +32,9 @@ proot-distro login debian -- bash -c '
 echo "🔗 Creating shortcuts..."
 echo 'alias pocketcode="proot-distro login debian"' >> ~/.bashrc
 
+# Step 5: Source bashrc to make alias available immediately
+source ~/.bashrc
+
 echo ""
 echo "✅ Setup Complete!"
 echo ""
