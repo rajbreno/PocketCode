@@ -2,6 +2,8 @@
   <img src="logo.png" alt="PocketCode" width="600">
 </p>
 
+> ☁️ **Want more power?** Run on a $4/month cloud server instead → [**$4PocketCode**](https://github.com/rajbreno/4PocketCode)
+
 # PocketCode
 
 **Run AI coding agents (OpenCode, Claude Code, Gemini CLI) on Android.**
