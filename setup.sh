@@ -19,7 +19,7 @@ proot-distro install debian > /dev/null 2>&1 || true
 
 # Step 3: Setup inside Debian
 echo "⚙️ Setting up development environment..."
-proot-distro login debian -- bash -c '
+proot-distro login debian --termux-home -- bash -c '
   apt update > /dev/null 2>&1
   apt install curl git build-essential python3 -y > /dev/null 2>&1
   curl -fsSL https://deb.nodesource.com/setup_20.x 2>/dev/null | bash - > /dev/null 2>&1
